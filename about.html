@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Nisha Pardeshi | Data Scientist</title>
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Core Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+    <script src="https://unpkg.com/splitting@1.0.6/dist/splitting.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/splitting@1.0.6/dist/splitting.css">
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.4.3/dist/echarts.min.js"></script>
+    
+    <!-- Custom Styles -->
+    <style>
+        :root {
+            --primary: #1a365d;
+            --secondary: #f6ad55;
+            --accent: #4fd1c7;
+            --neutral: #f7fafc;
+            --text: #2d3748;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--neutral);
+            color: var(--text);
+        }
+        
+        .font-display {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .font-mono {
+            font-family: 'JetBrains Mono', monospace;
+        }
+        
+        .nav-link {
+            position: relative;
+            color: var(--text);
+            text-decoration: none;
+            padding: 8px 16px;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-link:hover {
+            color: var(--secondary);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: var(--secondary);
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        
+        .nav-link:hover::after {
+            width: 80%;
+        }
+        
+        .nav-link.active {
+            color: var(--secondary);
+        }
+        
+        .nav-link.active::after {
+            width: 80%;
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-left: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            background: var(--secondary);
+            border-radius: 50%;
+            z-index: 2;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            left: 5px;
+            top: 1.5rem;
+            width: 2px;
+            height: calc(100% + 1rem);
+            background: #e2e8f0;
+            z-index: 1;
+        }
+        
+        .timeline-item:last-child::after {
+            display: none;
+        }
+        
+        .skill-category {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .skill-category:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .skill-tag {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: #f7fafc;
+            color: var(--text);
+            border-radius: 20px;
+            font-size: 0.875rem;
+            margin: 0.25rem;
+            transition: all 0.3s ease;
+        }
+        
+        .skill-tag:hover {
+            background: var(--secondary);
+            color: white;
+            transform: scale(1.05);
+        }
+        
+        .stat-card {
+            background: white;
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            font-weight: bold;
+            color: var(--secondary);
+            display: block;
+        }
+        
+        .certification-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .certification-card:hover {
+            transform: translateX(4px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        @media (max-width: 768px) {
+            .timeline-item {
+                padding-left: 1.5rem;
+            }
+            
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-md z-50 border-b border-gray-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="font-display text-2xl font-bold text-primary">
+                    <a href="index.html">Nisha Pardeshi</a>
+                </div>
+                
+                <div class="hidden md:flex space-x-8">
+                    <a href="index.html" class="nav-link">Home</a>
+                    <a href="about.html" class="nav-link active">About</a>
+                    <a href="contact.html" class="nav-link">Contact</a>
+                </div>
+                
+                <div class="md:hidden">
+                    <button id="mobile-menu-btn" class="text-gray-700 hover:text-secondary">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="block px-3 py-2 text-gray-700 hover:text-secondary">Home</a>
+                <a href="about.html" class="block px-3 py-2 text-gray-700 hover:text-secondary">About</a>
+                <a href="contact.html" class="block px-3 py-2 text-gray-700 hover:text-secondary">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Professional Experience -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl lg:text-5xl font-bold text-primary mb-6" data-splitting>
+                    Professional Experience
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    From analytics to machine learning engineering—building LLM-powered, agentic AI systems for meaningful business impact.
+                </p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="timeline-item">
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                            <div>
+                                <h3 class="font-display text-2xl font-bold text-primary mb-2">
+                                    Data Scientist
+                                </h3>
+                                <p class="text-lg font-semibold text-gray-700">Insurity Inc.</p>
+                            </div>
+                            <span class="text-sm text-gray-500 bg-white px-3 py-1 rounded-full mt-2 md:mt-0">
+                                2019 - Present
+                            </span>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Driving machine learning and analytics initiatives for insurance products, building production-grade ML systems, and using vibe coding to rapidly prototype AI-driven solutions. 
+                            Developing GenAI proofs of concept (POCs) with a tech-agnostic mindset, while contributing to diverse data and AI initiatives that showcase depth across the modern analytics and ML tech stack. Collaborating with cross-functional teams across product areas to deliver explainable, scalable data products.
+                        </p>
+                        <div class="grid md:grid-cols-2 gap-4 text-sm">
+                            <div>
+                                <strong>Key Achievements:</strong>
+                                <ul class="list-disc list-inside text-gray-600 mt-2 space-y-1">
+                                    <li>🏆 Won 1st place in company Create-a-thon (Vibe Coding Project)
+                                        <ul class="list-disc list-inside ml-6 mt-1 space-y-1 text-gray-500">
+                                            <li>Built an AI-powered insurance claims platform that streamlined the end-to-end claims lifecycle.</li>
+                                            <li>Auto damage annotation using LLMs</li>
+                                            <li>OCR for license plate detection and form autofill</li>
+                                            <li>Weather API + police report integration for validation</li>
+                                            <li>Metadata-based tagging to improve fraud detection</li>
+                                        </ul>
+                                    </li>
+                                    <li>Built predictive models for claim escalation and CWP (67.7% accuracy, 66.5% TPR)</li>
+                                    <li>Applied SHAP for model explainability and business adoption</li>
+                                    <li>Developed automated ML pipeline, reducing development time from 12 months to 2 weeks</li>
+                                    <li>Engineered Snowflake data sampling framework, cutting manual preparation by 60%</li>
+                                    <li>Delivered real-time claims analytics platform for underwriters, managers, and stakeholders</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <strong>Technologies:</strong>
+                                <div class="flex flex-wrap gap-2 mt-2">
+                                    <span class="skill-tag">LLMs (OpenAI, LangChain)</span>
+                                    <span class="skill-tag">OCR (Tesseract)</span>
+                                    <span class="skill-tag">Prompt Engineering</span>
+                                    <span class="skill-tag">Vibe Coding</span>
+                                    <span class="skill-tag">Python</span>
+                                    <span class="skill-tag">Scikit-learn</span>
+                                    <span class="skill-tag">XGBoost</span>
+                                    <span class="skill-tag">SHAP</span>
+                                    <span class="skill-tag">Pandas</span>
+                                    <span class="skill-tag">Numpy</span>
+                                    <span class="skill-tag">SQL</span>
+                                    <span class="skill-tag">Snowflake</span>
+                                    <span class="skill-tag">Qlik</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                            <div>
+                                <h3 class="font-display text-2xl font-bold text-primary mb-2">
+                                    Senior Software Engineer
+                                </h3>
+                                <p class="text-lg font-semibold text-gray-700">Xoriant Solutions</p>
+                            </div>
+                            <span class="text-sm text-gray-500 bg-white px-3 py-1 rounded-full mt-2 md:mt-0">
+                                2013 - 2017
+                            </span>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                          Specialized in data engineering and backend development for enterprise applications. 
+                          Worked on data lake migrations, database optimization, and scalable processing, while automating deployment and improving system reliability.
+                        </p>
+                        <div class="grid md:grid-cols-2 gap-4 text-sm">
+                            <div>
+                                <strong>Key Achievements:</strong>
+                                <ul class="list-disc list-inside text-gray-600 mt-2 space-y-1">
+                                    <li>Migrated data lake from SQL Server to Hadoop (HDFS) using Sqoop and developed Hive/Pig/Couchbase POCs</li>
+                                    <li>Unified two application databases into optimized SQL Server schema, reducing redundancy by 30%</li>
+                                    <li>Automated build deployment and environment setup, cutting setup time by 90%</li>
+                                    <li>Developed backend modules with Java, Spring, Hibernate, and JavaScript, improving system reliability</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <strong>Technologies:</strong>
+                                <div class="flex flex-wrap gap-2 mt-2">
+                                    <span class="skill-tag">Java</span>
+                                    <span class="skill-tag">Spring</span>
+                                    <span class="skill-tag">Hibernate</span>
+                                    <span class="skill-tag">JavaScript</span>
+                                    <span class="skill-tag">SQL</span>
+                                    <span class="skill-tag">Hadoop (HDFS)</span>
+                                    <span class="skill-tag">Hive</span>
+                                    <span class="skill-tag">Pig</span>
+                                    <span class="skill-tag">CouchbaseDB</span>
+                                    <span class="skill-tag">Sqoop</span>
+                                    <span class="skill-tag">Batch Scripts</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-item">
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                            <div>
+                                <h3 class="font-display text-2xl font-bold text-primary mb-2">
+                                    Senior Software Executive
+                                </h3>
+                                <p class="text-lg font-semibold text-gray-700">Future Generali Life Insurance Ltd.</p>
+                            </div>
+                            <span class="text-sm text-gray-500 bg-white px-3 py-1 rounded-full mt-2 md:mt-0">
+                                2011 - 2012
+                            </span>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Specialized in business intelligence and enterprise reporting, delivering actionable insights on sales, policies, and claims through automated dashboards.
+                        </p>
+                        <div class="grid md:grid-cols-2 gap-4 text-sm">
+                            <div>
+                                <strong>Key Achievements:</strong>
+                                <ul class="list-disc list-inside text-gray-600 mt-2 space-y-1">
+                                    <li>Built and maintained enterprise reports with SSRS, delivering key metrics on sales, policies, and claims</li>
+                                    <li>Integrated reporting frameworks with dashboards, enhancing executive visibility</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <strong>Technologies:</strong>
+                                <div class="flex flex-wrap gap-2 mt-2">
+                                    <span class="skill-tag">SQL</span>
+                                    <span class="skill-tag">SSRS</span>
+                                    <span class="skill-tag">BI Tools</span>
+                                    <span class="skill-tag">Dashboards</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <div class="flex flex-col md:flex-row md:justify-between md:items-start mb-4">
+                            <div>
+                                <h3 class="font-display text-2xl font-bold text-primary mb-2">
+                                    Software Engineer
+                                </h3>
+                                <p class="text-lg font-semibold text-gray-700">Future Generali Life Insurance Ltd.</p>
+                            </div>
+                            <span class="text-sm text-gray-500 bg-white px-3 py-1 rounded-full mt-2 md:mt-0">
+                                2008 - 2011
+                            </span>
+                        </div>
+                        <p class="text-gray-600 mb-4">
+                            Started career in software development and enterprise applications, building systems for HR and hospitality. Gained expertise in Java-based backend development, modular design, and process automation.
+                        </p>
+                        <div class="grid md:grid-cols-2 gap-4 text-sm">
+                            <div>
+                                <strong>Key Achievements:</strong>
+                                <ul class="list-disc list-inside text-gray-600 mt-2 space-y-1">
+                                    <li>Developed Employee Rating System with Java-J2EE and SQL Server, automating HR processes with SMTP notifications</li>
+                                    <li>Designed Hotel Management System modules using Java, Spring, Hibernate, and JavaScript, improving modularity and scalability</li>
+                                </ul>
+                            </div>
+                            <div>
+                                <strong>Technologies:</strong>
+                                <div class="flex flex-wrap gap-2 mt-2">
+                                    <span class="skill-tag">Java</span>
+                                    <span class="skill-tag">J2EE</span>
+                                    <span class="skill-tag">Spring</span>
+                                    <span class="skill-tag">Hibernate</span>
+                                    <span class="skill-tag">JavaScript</span>
+                                    <span class="skill-tag">SQL</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    
+
+    <!-- Technical Skills -->
+    <section class="py-20 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl lg:text-5xl font-bold text-primary mb-6" data-splitting>
+                    Technical Skills
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Comprehensive expertise across the data science stack, from programming languages 
+                    to machine learning frameworks and cloud technologies.
+                </p>
+            </div>
+            
+            
+            
+            <!-- Skill Categories -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Programming Languages -->
+                <div class="skill-category">
+                    <h3 class="font-display text-xl font-bold text-primary mb-4">Programming Languages</h3>
+                    <div class="space-y-3">
+                        <div>
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="font-semibold">Python</span>
+                                <span class="text-sm text-gray-500">Expert</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-secondary h-2 rounded-full" style="width: 95%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="font-semibold">SQL</span>
+                                <span class="text-sm text-gray-500">Advanced</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-secondary h-2 rounded-full" style="width: 90%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="font-semibold">R</span>
+                                <span class="text-sm text-gray-500">Intermediate</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-secondary h-2 rounded-full" style="width: 75%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="font-semibold">JavaScript</span>
+                                <span class="text-sm text-gray-500">Intermediate</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-secondary h-2 rounded-full" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="font-semibold">Shell / Bash</span>
+                                <span class="text-sm text-gray-500">Intermediate</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-secondary h-2 rounded-full" style="width: 70%"></div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-between items-center mb-1">
+                                <span class="font-semibold">GenAI / LLM</span>
+                                <span class="text-sm text-gray-500">Intermediate</span>
+                            </div>
+                            <div class="w-full bg-gray-200 rounded-full h-2">
+                                <div class="bg-secondary h-2 rounded-full" style="width: 70%"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Machine Learning Frameworks -->
+                <div class="skill-category">
+                    <h3 class="font-display text-xl font-bold text-primary mb-4">ML Frameworks</h3>
+                    <div class="flex flex-wrap">
+                        <span class="skill-tag">Scikit-learn</span>
+                        <span class="skill-tag">XGBoost</span>
+                        <span class="skill-tag">LightGBM</span>
+                        <span class="skill-tag">Hugging Face</span>
+                        <span class="skill-tag">SHAP</span>
+                        <span class="skill-tag">SpaCy</span>
+                        <span class="skill-tag">TensorFlow</span>
+                        <span class="skill-tag">LangChain</span>
+                        <span class="skill-tag">OpenAI API</span>
+                        <span class="skill-tag">Prompt Engineering</span>
+                        <span class="skill-tag">OCR (Tesseract)</span>
+                    </div>
+                </div>
+                
+                <!-- Data Visualization -->
+                <div class="skill-category">
+                    <h3 class="font-display text-xl font-bold text-primary mb-4">Data Visualization</h3>
+                    <div class="flex flex-wrap">
+                        <span class="skill-tag">Matplotlib</span>
+                        <span class="skill-tag">Seaborn</span>
+                        <span class="skill-tag">Plotly</span>
+                        <span class="skill-tag">Qlik</span>
+                        <span class="skill-tag">SSRS</span>
+                        <span class="skill-tag">D3.js</span>
+                        <span class="skill-tag">Streamlit</span>
+                        <span class="skill-tag">Gradio</span>
+                    </div>
+                </div>
+                
+                <!-- Big Data & Cloud -->
+                <div class="skill-category">
+                    <h3 class="font-display text-xl font-bold text-primary mb-4">Big Data & Cloud</h3>
+                    <div class="flex flex-wrap">
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">Hadoop</span>      
+                    </div>
+                </div>
+                
+                <!-- Databases -->
+                <div class="skill-category">
+                    <h3 class="font-display text-xl font-bold text-primary mb-4">Databases</h3>
+                    <div class="flex flex-wrap">
+                        <span class="skill-tag">Snowflake</span>
+                        <span class="skill-tag">MySQL</span>
+                        <span class="skill-tag">Oracle</span>
+                        <span class="skill-tag">MongoDB</span>
+                        <span class="skill-tag">SQL Server</span>
+                        <span class="skill-tag">CouchbaseDB</span>
+                    </div>
+                </div>
+                
+                <!-- Tools & Platforms -->
+                <div class="skill-category">
+                    <h3 class="font-display text-xl font-bold text-primary mb-4">Tools & Platforms</h3>
+                    <div class="flex flex-wrap">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">SVN</span>
+                        <span class="skill-tag">Jupyter</span>
+                        <span class="skill-tag">Anaconda</span>
+                        <span class="skill-tag">VS Code</span>
+                        <span class="skill-tag">PyCharm</span>
+                        <span class="skill-tag">Postman</span>
+                        <span class="skill-tag">Poetry</span>
+                        <span class="skill-tag">Makefile</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="font-display text-4xl lg:text-5xl font-bold text-primary mb-6" data-splitting>
+                    Education
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Continuous learning through formal education and self-driven courses
+                    to stay current with evolving data science technologies.
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-2 gap-12">
+                <!-- Education -->
+                <div>
+                    <h3 class="font-display text-2xl font-bold text-primary mb-8">Education</h3>
+                    <div class="space-y-6">
+                        <div class="bg-gray-50 rounded-lg p-6">
+                            <div class="flex justify-between items-start mb-4">
+                                <div>
+                                    <h4 class="font-display text-xl font-bold text-primary">
+                                        Master of Science in Data Science
+                                    </h4>
+                                    <p class="text-gray-700 font-semibold">Rawls College Of Business (TTU)</p>
+                                </div>
+                                <span class="text-sm text-gray-500 bg-white px-3 py-1 rounded-full">
+                                    Aug 2019
+                                </span>
+                            </div>
+                            <p class="text-gray-600 mb-4">
+                                Completed a STEM-designated program covering statistics, machine learning, databases, business intelligence, time series, and big data analytics, with hands-on projects translating complex data into actionable insights.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="skill-tag">GPA: 4.0/4.0</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center">
+                <div class="font-display text-2xl font-bold mb-4">Nisha Pardeshi</div>
+                <p class="text-gray-300 mb-6">
+                    Data Scientist passionate about transforming insights into impact
+                </p>
+                <div class="flex justify-center space-x-6 mb-8">
+                    <a href="https://github.com/nishapardeshi" target="_blank" class="text-gray-300 hover:text-secondary transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                    <a href="https://linkedin.com/in/nishapardeshi" target="_blank" class="text-gray-300 hover:text-secondary transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                        </svg>
+                    </a>
+                    <a href="mailto:nisha.pardeshi@email.com" class="text-gray-300 hover:text-secondary transition-colors">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                    </a>
+                </div>
+                <div class="border-t border-gray-700 pt-6">
+                    <p class="text-gray-400 text-sm">
+                        © 2026 Nisha Pardeshi. All rights reserved. Built with passion for data science.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- JavaScript -->
+    <script src="main.js"></script>
+</body>
+</html>
